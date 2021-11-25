@@ -1,6 +1,6 @@
 import { User } from ".prisma/client";
 
-import { ICreateUserRequestDTO } from "../useCases/CreateUserDTO";
+import { ICreateUserRequestDTO } from "../useCases/createUser/CreateUserDTO";
 
 export interface IUsersRepository {
     findByEmail(email: string): Promise<User | null>;
