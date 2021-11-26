@@ -1,11 +1,22 @@
+// Create User
 POST http://localhost:3001/users/
+content-type: application/json
+
+{
+    "email": "tomw@mail.com",
+    "password": "password"
+}
+
+###
+// get all users
+GET http://localhost:3001/users/
+
+###
+// Authenticate User
+POST http://localhost:3001/users/login
 content-type: application/json
 
 {
     "email": "tom@mail.com",
     "password": "password"
 }
-
-###
-
-get http://localhost:3001/users/

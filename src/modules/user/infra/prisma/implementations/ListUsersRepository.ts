@@ -9,12 +9,12 @@ export class ListUsersRepository implements IListUsersRepository {
     constructor() {
         this.repository = prismaClient.user;
     }
-    async findById(id: string): Promise<User | null> {
+    async findById(id: string): Promise<User> {
         const user = await this.repository.findFirst({ where: { id } });
         return user;
     }
 
-    async findAll(): Promise<User[] | null> {
+    async findAll(): Promise<User[]> {
         const user = await this.repository.findMany({
             select: {
                 id: true,
