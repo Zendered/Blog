@@ -11,6 +11,8 @@ services:
             POSTGRES_DB: blog
         volumes:
             - .docker/dbdata:/var/lib/postgres
+        expose:
+            - 5432
 
     blog:
         build: .

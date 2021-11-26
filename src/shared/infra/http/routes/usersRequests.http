@@ -1,1 +1,7 @@
-GET http://localhost:3001/users/test
+POST http://localhost:3001/users/
+content-type: application/json
+
+{
+    "email": "bob@mail.com",
+    "password": "password"
+}
