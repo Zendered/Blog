@@ -4,6 +4,8 @@ import { AppError } from "@shared/errors/AppError";
 
 import { router } from "./routes";
 
+import "express-async-errors";
+
 export const app = express();
 app.use(express.json());
 

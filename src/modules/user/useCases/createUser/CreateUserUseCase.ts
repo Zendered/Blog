@@ -1,7 +1,9 @@
+import { hash } from "bcrypt";
+
 import { AppError } from "@shared/errors/AppError";
 
 import { IUsersRepository } from "../../repositories/IUsersRepository";
-import { ICreateUserRequestDTO } from "./CreateUserDTO";
+import { ICreateUserRequestDTO } from "./ICreateUserDTO";
 
 export class CreateUserUseCase {
     constructor(private usersRepository: IUsersRepository) { }
@@ -9,9 +11,11 @@ export class CreateUserUseCase {
         const userExists = await this.usersRepository.findByEmail(email);
 
         if (userExists) {
-            throw new AppError("User already exists!");
+            throw new AppError("Email/Password Invalid!");
         }
 
-        await this.usersRepository.create({ email, password });
+        const hashedPassword = await hash(password, 9);
+
+        await this.usersRepository.create({ email, password: hashedPassword });
     }
 }
