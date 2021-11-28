@@ -6,12 +6,6 @@ import listUsersController from "@modules/user/useCases/listUsers";
 
 export const usersRouter = Router();
 
-// const userData = (fn) => {
-//     return (req: Request, res: Response, next: NextFunction) => {
-//         fn(req, res, next).catch(next);
-//     };
-// };
-
 usersRouter.post("/", (req: Request, res: Response) =>
     createUserController().handle(req, res)
 );

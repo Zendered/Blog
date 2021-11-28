@@ -17,15 +17,17 @@ interface IResponse {
 export class AuthenticateUserUseCase {
     constructor(private usersRepository: IUsersRepository) { }
     async execute({ email, password }: IRequest): Promise<IResponse> {
+        console.log("antes", email, password);
         const user = await this.usersRepository.findByEmail(email);
+        console.log("depois", email, password);
         const passwordMatch = await compare(password, user.password);
+        console.log(passwordMatch);
+        console.log("depois do depois", email, password);
 
-        if (!user) {
-            throw new AppError("Email or Password Incorrect!");
+        if (!user || !passwordMatch) {
+            throw new AppError("Email or Password Incorrect!", 401);
         }
-        if (!passwordMatch) {
-            throw new AppError("Email or Password Incorrect!");
-        }
+        console.log("depois do depois do depois ainda", email, password);
 
         const token = sign({}, `${process.env.JWT_SECRET}`, {
             subject: user.id,

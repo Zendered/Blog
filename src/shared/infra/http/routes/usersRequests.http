@@ -3,8 +3,8 @@ POST http://localhost:3001/users/
 content-type: application/json
 
 {
-    "email": "tomw@mail.com",
-    "password": "password"
+    "email": "bob@mail.com",
+    "password": "pass123"
 }
 
 ###
@@ -17,6 +17,6 @@ POST http://localhost:3001/users/login
 content-type: application/json
 
 {
-    "email": "tom@mail.com",
-    "password": "password"
+    "email": "bob@mail.com2",
+    "password": "pass123"
 }
